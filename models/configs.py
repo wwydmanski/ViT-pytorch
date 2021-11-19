@@ -88,6 +88,12 @@ def get_l32_config():
     return config
 
 
+def get_fmnist_config():
+    """Returns the ViT-L/32 configuration."""
+    config = get_l16_config()
+    config.patches.size = (9, 9)
+    return config
+
 def get_h14_config():
     """Returns the ViT-L/16 configuration."""
     config = ml_collections.ConfigDict()
