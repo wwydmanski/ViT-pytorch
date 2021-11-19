@@ -62,7 +62,7 @@ def setup(args):
     num_classes = 10 if args.dataset == "cifar10" else 100
 
     model = VisionTransformer(config, args.img_size, zero_head=True, num_classes=num_classes)
-    model.load_from(np.load(args.pretrained_dir))
+    # model.load_from(np.load(args.pretrained_dir))
     model.to(args.device)
     num_params = count_parameters(model)
 
@@ -244,9 +244,9 @@ def main():
     # Required parameters
     parser.add_argument("--name", required=True,
                         help="Name of this run. Used for monitoring.")
-    parser.add_argument("--dataset", choices=["cifar10", "cifar100"], default="cifar10",
+    parser.add_argument("--dataset", choices=["cifar10", "cifar100", "fashion-mnist"], default="cifar10",
                         help="Which downstream task.")
-    parser.add_argument("--model_type", choices=["ViT-B_16", "ViT-B_32", "ViT-L_16",
+    parser.add_argument("--model_type", choices=["ViT-B_16", "ViT-B_32", "ViT-L_16", "ViT-fmnist",
                                                  "ViT-L_32", "ViT-H_14", "R50-ViT-B_16"],
                         default="ViT-B_16",
                         help="Which variant to use.")
